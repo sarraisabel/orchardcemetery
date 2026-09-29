@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Orchard Cemetery · Verger Cimetière</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332; --forest-deep:#12301F; --sage:#2D6A4F; --sage-soft:#E7EDE6;
+    --gold:#B7950B; --gold-soft:#EFE4BF; --cream:#F9F5EC; --cream-2:#F2ECDD;
+    --ink:#333333; --ink-soft:#5c5b53; --line:#D8CFB8;
+    --serif:'Lora',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+    --wrap:1120px; --measure:64ch;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.7;
+    -webkit-font-smoothing:antialiased;font-size:17px}
+  h1,h2,h3{font-family:var(--serif);color:var(--forest);font-weight:500;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .measure{max-width:var(--measure)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(249,245,236,.92);
+    backdrop-filter:saturate(1.1) blur(6px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:24px;height:70px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--forest);
+    letter-spacing:-.01em;white-space:nowrap;cursor:pointer;text-decoration:none}
+  .brand small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-top:1px}
+  nav.main{display:flex;gap:22px;margin-left:8px;flex:1}
+  nav.main a{font-size:14.5px;font-weight:500;color:var(--ink-soft);text-decoration:none;
+    padding:6px 0;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s}
+  nav.main a:hover{color:var(--forest)}
+  nav.main a.active{color:var(--forest);border-bottom-color:var(--gold)}
+  .lang{display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--ink-soft)}
+  .lang button{background:none;border:none;font:inherit;color:var(--ink-soft);cursor:pointer;
+    padding:2px 6px;border-radius:4px}
+  .lang button.on{color:var(--forest);background:var(--sage-soft)}
+  .lang span{opacity:.4;padding:0 1px}
+  .btn{font-family:var(--sans);font-weight:600;font-size:14.5px;cursor:pointer;
+    border:none;border-radius:2px;padding:11px 20px;text-decoration:none;display:inline-block;
+    transition:transform .12s, background .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn-forest{background:var(--forest);color:var(--cream)}
+  .btn-forest:hover{background:var(--forest-deep)}
+  .btn-gold{background:var(--gold);color:#2a2205}
+  .btn-gold:hover{background:#a2830a}
+  .btn-cream{background:var(--cream);color:var(--forest)}
+  .btn-cream:hover{background:#fff}
+  .cta-head{white-space:nowrap}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--forest);cursor:pointer}
+
+  /* page fade */
+  main{min-height:60vh}
+  .page{display:none;animation:fade .4s ease}
+  .page.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.page{animation:none}}
+
+  section{padding:72px 0}
+  .eyebrow{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.02em;
+    color:var(--sage);margin-bottom:14px}
+  h2.section{font-size:34px;margin-bottom:22px}
+  p.lead{font-size:20px;line-height:1.65}
+  .prose p{margin-bottom:20px;max-width:var(--measure)}
+  .rule{height:1px;background:var(--line);border:0;max-width:var(--wrap);margin:0 auto}
+
+  /* hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--cream);overflow:hidden;padding:40px 20px}
+  .hero .ph{position:absolute;inset:0;background:
+    radial-gradient(120% 120% at 70% 20%, #35694f 0%, #1B4332 55%, #12301F 100%)}
+  .hero .ph::after{content:"orchard in golden light · l’ancien Jardin Cléroux";
+    position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(249,245,236,.45);font-family:var(--sans)}
+  .hero-inner{position:relative;max-width:760px}
+  .hero h1{color:var(--cream);font-size:clamp(40px,7vw,74px);font-weight:500;line-height:1.05}
+  .hero p{font-size:clamp(17px,2.4vw,21px);margin:26px auto 34px;max-width:600px;
+    color:rgba(249,245,236,.9)}
+  .hero .arrow{margin-left:6px}
+
+  /* vision — signature moment */
+  .vision{background:var(--forest);color:var(--cream);padding:96px 0}
+  .vision .line{font-family:var(--serif);font-size:clamp(30px,5.2vw,56px);line-height:1.12;
+    font-weight:400;max-width:15ch;margin-bottom:8px}
+  .vision .line.a{color:rgba(249,245,236,.55)}
+  .vision .line.b{color:var(--cream)}
+  .vision .line.c{color:var(--gold)}
+
+  /* mission / bands */
+  .band-sage{background:var(--sage);color:var(--cream)}
+  .band-sage h2{color:var(--cream)}
+  .band-cream2{background:var(--cream-2)}
+
+  /* media */
+  .media{display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+    padding:30px 32px;background:#fff;border:1px solid var(--line);border-radius:4px;
+    max-width:760px}
+  .media .k{font-family:var(--serif);font-size:20px;color:var(--forest)}
+
+  /* waitlist form */
+  .form{max-width:520px}
+  .form label{display:block;font-size:13px;font-weight:600;color:inherit;margin:16px 0 6px}
+  .form input[type=text],.form input[type=email],.form textarea{width:100%;font:inherit;
+    font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:3px;
+    background:#fff;color:var(--ink)}
+  .form textarea{min-height:120px;resize:vertical}
+  .checks{margin-top:8px}
+  .checks label{display:flex;align-items:center;gap:10px;font-weight:500;font-size:15px;
+    margin:8px 0;cursor:pointer}
+  .checks input{width:17px;height:17px;accent-color:var(--forest)}
+  .form .btn{margin-top:24px}
+  .form-note{font-size:13px;margin-top:14px;opacity:.7}
+  .thanks{background:var(--gold-soft);border:1px solid var(--gold);color:#4a3c05;
+    padding:16px 18px;border-radius:4px;font-weight:500;margin-top:20px;display:none}
+
+  /* offer grid */
+  .offer{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px}
+  .offer .card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 26px}
+  .offer .card h3{font-size:21px;margin-bottom:12px;border-top:2px solid var(--gold);padding-top:18px;display:inline-block}
+  .offer .card p{font-size:15.5px;color:var(--ink-soft)}
+
+  /* land facts */
+  .facts{display:flex;gap:40px;flex-wrap:wrap;margin-top:30px}
+  .facts .f{border-left:2px solid var(--gold);padding-left:16px}
+  .facts .f b{font-family:var(--serif);font-size:30px;color:var(--forest);display:block;font-weight:500}
+  .facts .f span{font-size:14px;color:var(--ink-soft)}
+
+  /* glimpse */
+  .glimpse{background:var(--forest-deep);color:var(--cream);border-radius:6px;padding:52px 44px;margin-top:8px}
+  .glimpse h2{color:var(--cream)}
+  .glimpse p{color:rgba(249,245,236,.85);max-width:var(--measure)}
+
+  /* faq */
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;text-align:left;background:none;border:none;font-family:var(--serif);
+    font-size:21px;color:var(--forest);font-weight:500;cursor:pointer;padding:24px 40px 24px 0;
+    position:relative}
+  .faq-q::after{content:"+";position:absolute;right:6px;top:22px;font-family:var(--sans);
+    font-size:24px;color:var(--sage);transition:transform .2s}
+  .faq-item.open .faq-q::after{content:"–"}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a .inner{padding:0 0 26px;max-width:var(--measure);color:var(--ink)}
+  .faq-a a{color:var(--sage);font-weight:500}
+  .partners{margin-top:10px;font-size:15px}
+  .partners a{display:inline-block;margin-right:18px}
+
+  /* story */
+  .story-hero{padding:80px 0 40px}
+  .story-hero h1{font-size:clamp(38px,6vw,60px)}
+  .signature{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--sage);margin-top:34px}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact-grid a.email{font-family:var(--serif);font-size:22px;color:var(--sage);
+    text-decoration:none;border-bottom:1px solid var(--line)}
+
+  /* footer */
+  footer{background:var(--forest-deep);color:rgba(249,245,236,.8);padding:56px 0 40px;margin-top:20px}
+  footer .frow{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end}
+  footer .tag{font-family:var(--serif);font-size:22px;color:var(--cream);max-width:22ch;line-height:1.3}
+  footer .meta{font-size:13px;line-height:1.9}
+  footer a{color:var(--gold-soft);text-decoration:none}
+
+  @media (max-width:820px){
+    nav.main{display:none;position:absolute;top:70px;left:0;right:0;background:var(--cream);
+      flex-direction:column;padding:14px 28px;border-bottom:1px solid var(--line);gap:4px}
+    nav.main.open{display:flex}
+    nav.main a{padding:10px 0;border-bottom:1px solid var(--line)}
+    nav.main a.active{border-bottom-color:var(--line)}
+    .menu-toggle{display:block;order:3}
+    .cta-head{display:none}
+    .bar{gap:12px}
+    .offer{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:32px}
+    section{padding:52px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" onclick="go('home')">The Orchard Cemetery<small id="brand-sub">Verger Cimetière · Pierrefonds</small></a>
+    <nav class="main" id="nav"></nav>
+    <div class="lang" id="lang"></div>
+    <a class="btn btn-forest cta-head" id="cta-head" onclick="go('home');scrollToForm()"></a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap frow">
+    <div class="tag" id="foot-tag"></div>
+    <div class="meta" id="foot-meta"></div>
+  </div>
+</footer>
+
+<script>
+const C = {
+  en:{
+    nav:{home:"Home",story:"Our Story",project:"The Project",faq:"FAQ",contact:"Contact"},
+    ctaHead:"Join the Waitlist",
+    brandSub:"Verger Cimetière · Pierrefonds",
+    home:{
+      heroH:"Where memory takes root.",
+      heroP:"A living memorial orchard in the heart of Pierrefonds — where fruit trees replace tombstones, and legacy feeds generations to come.",
+      heroCta:"Join the Waitlist",
+      introEye:"The context",
+      introP1:"For over 60 years, a beloved garden centre has graced the banks of Gouin Boulevard West in Pierrefonds. The land is alive — lush, green, and generous — and it has been a gathering place for West Island families for generations.",
+      introP2:"Today, that land is for sale. And we are determined to protect it.",
+      v1:"Not condominiums. Not concrete.",
+      v2:"A living orchard.",
+      v3:"A place to remember. A place to return.",
+      missionEye:"Our mission",
+      missionP1:"The Pierrefonds Orchard Cemetery is a place where grief and growth coexist. Where instead of a cold stone, a fruit tree marks a life — nourishing the earth, sheltering wildlife, and welcoming the living for years to come.",
+      missionP2:"We are preserving a community green space, reviving a centuries-old practice, and creating a destination rooted in memory, nature, and belonging.",
+      mediaEye:"In the news",
+      mediaK:"We’ve been featured on CBC Radio.",
+      mediaBtn:"Listen to the interview",
+      mediaUrl:"https://www.cbc.ca/listen/live-radio/1-383-lets-go/clip/16001454",
+      wlEye:"Join the waitlist",
+      wlH:"Be part of something rooted.",
+      wlP:"Join our growing community of believers, and be the first to know when plots become available.",
+      fName:"First name", fEmail:"Email",
+      fInterest:"I’m interested in:",
+      opt1:"A plot for a person", opt2:"A plot for a pet",
+      opt3:"The project in general", opt4:"All of the above",
+      wlBtn:"Count me in",
+      thanks:"Thank you — you’re on the list. We’ll be in touch."
+    },
+    story:{
+      h:"Our Story",
+      note:"The heart of the project.",
+      s1h:"The origin",
+      s1:["The idea began in grief. But it grew into something larger.",
+          "In the month after a devastating family loss, we planted a tree — a serviceberry tree, just outside our home in Pierrefonds. It wasn’t planned. But it brought me peace.",
+          "That tree blooms quietly each spring. It’s visited by birds in the morning, standing tall through every season. Unlike a grave, it doesn’t only remind me of loss. It reminds me that love continues. That life returns. That grief, too, can grow roots."],
+      s2h:"The vision that followed",
+      s2:["I am tired of watching the world be covered in concrete. Tired of hearing how we are failing the earth. Tired of the complaining and the inaction.",
+          "I want to build something. Something living.",
+          "The orchard cemetery is my answer to that. A place where grief can grow into something meaningful. Where memory feeds the earth. Where we leave behind more trees, more abundance, more creation — and less sorrow.",
+          "It is also, I’ve come to realize, something even more. A destination. A living landmark for the West Island. A space where families gather not only in mourning, but in celebration — in every season, for generations.",
+          "This is my vision for the land on Gouin Boulevard West. And I believe it is possible."],
+      s3h:"Who I am",
+      s3:["My name is Sarra Muñoz. I live in Pierrefonds. I am a mother, a wife, a daughter, and a marketing professional. I hold an MBA and I speak English, French, and Spanish.",
+          "But credentials only say so much. What drives this project is simpler and deeper than any of that: I planted a tree for someone I loved. And I haven’t been able to stop thinking about what it could mean to offer that same gift — life continuing, love visible, memory rooted in something living — to every family who has ever stood beside a cold stone and wished for something more."],
+      sign:"— Sarra Muñoz, Pierrefonds"
+    },
+    project:{
+      h:"The Project",
+      p1h:"What is an orchard cemetery?",
+      p1:["An orchard cemetery is a memorial space where each burial is accompanied by the planting of a fruit tree. Rather than traditional tombstones, trees serve as living markers — symbols of memory, nourishment, and renewal.",
+          "This concept is not new. In the Middle Ages, monastic communities combined burial grounds with orchards and gardens, reflecting the understanding that life and death are part of the same natural cycle. We are reviving that practice for today’s world — and for tomorrow’s."],
+      p2h:"Why fruit trees?",
+      p2:["Fruit trees are symbols of abundance and continuity. They provide food, shelter for pollinators, and beauty through every season.",
+          "Many heritage fruit varieties — cultivated for centuries — are disappearing because industrial agriculture no longer finds them profitable. The Pierrefonds Orchard Cemetery will plant and preserve these threatened varieties, one tree at a time, creating a living library of biodiversity in the heart of our community."],
+      p3h:"The land",
+      p3:["The project is planned for the 5.7-hectare property surrounding the former Jardin Cléroux (Botanix) on Gouin Boulevard West — a green space that has served the Pierrefonds community for over 60 years.",
+          "If possible, we intend to continue the operations of the garden centre and nursery, honouring the site’s living legacy."],
+      facts:[["5.7 ha","of living green space"],["3,200–5,000","trees the site can hold"],["60+ yrs","serving the community"]],
+      offerH:"What we offer",
+      offer:[
+        ["Plots for people","Natural ecological burial plots where a heritage fruit tree is planted in place of a tombstone. Families may visit the orchard, harvest fruit, and witness their loved one’s tree grow through every season."],
+        ["Plots for pets","Natural burial plots for beloved animals, each marked by a dwarf fruit tree or flowering perennial."],
+        ["Celebrations of life","The existing structures on the property will be lovingly repurposed as a space for memorial gatherings, celebrations of life, and community events — surrounded by nature."]
+      ],
+      glimpseH:"A glimpse of what’s coming",
+      glimpse:["The orchard cemetery is the soul of this project. But we envision something more: a destination where people come not only to mourn, but to stay, to savour, and to connect.",
+        "In the seasons ahead, we are exploring the possibility of a boutique space for visitors — a place to rest, to gather, and to experience the beauty of the orchard across every season. A kitchen where the harvest becomes something shared. A café where grief softens over a warm cup, and where life — quietly, persistently — continues.",
+        "More details are coming. Stay close."]
+    },
+    faq:{
+      h:"Frequently asked questions",
+      items:[
+        ["What is a natural or ecological burial?","A simple and natural burial, without chemical embalming, in a casket made of biodegradable materials — unfinished wood, wicker, cardboard, or a natural shroud. The body returns to the earth the way nature intended."],
+        ["Are there similar sites in Québec?","Yes — two currently exist. The Pierrefonds Orchard Cemetery would be the third natural burial site in Québec, and the first to combine ecological burial with a working fruit orchard at this scale.<div class='partners'><a href='https://coopfuneraireestrie.com' target='_blank'>Coopérative Funéraire de l’Estrie →</a><a href='https://lessentiers.ca' target='_blank'>Les Sentiers →</a></div>"],
+        ["What happens to the fruit grown in the orchard?","We believe in letting life continue — and that includes the harvest. Families will be welcome to collect fruit from their loved one’s tree as a seasonal tradition. Excess fruit may be composted to nourish the orchard, or shared with local community partners. We are still shaping the details and welcome your ideas."],
+        ["Can families visit the trees?","Yes. The orchard cemetery will be a welcoming, accessible space for families and loved ones to visit, walk, and sit among the trees in every season. It is not only a place of remembrance — it is a place of return."],
+        ["Where is the project in its development?","We presented the project to the City of Pierrefonds-Roxboro in 2023 and received encouraging support. We were featured on CBC Radio, presented the vision to the landowner, and built a growing community of people who believe in this project. We are now rebuilding momentum — re-engaging with the city, exploring financing structures, and growing our waitlist. Every name on that list is a voice that says: this matters. This should exist. If you believe that too, join us."],
+        ["How can I help?","The most powerful thing you can do right now: join our waitlist, share this project with someone who would understand it, and — if you work in municipal governance, environmental finance, urban planning, or the funeral industry — reach out. We are building partnerships. Every conversation plants a seed."]
+      ]
+    },
+    contact:{
+      h:"Contact",
+      p:"Do you have questions? Would you like to be involved? Or would you simply like to say hello? We’d love to hear from you.",
+      email:"sarra.isabel@gmail.com",
+      fName:"Name", fEmail:"Email", fMsg:"Message", btn:"Send",
+      thanks:"Thank you — your message is on its way."
+    },
+    footer:{tag:"Where memory takes root.", meta:"Orchard Cemetery · Verger Cimetière<br>Pierrefonds, Montréal<br>orchardcemetery.ca · vergercimetiere.ca"}
+  },
+
+  fr:{
+    nav:{home:"Accueil",story:"Notre histoire",project:"Le projet",faq:"FAQ",contact:"Contact"},
+    ctaHead:"Rejoindre la liste",
+    brandSub:"Verger Cimetière · Pierrefonds",
+    home:{
+      heroH:"Là où la mémoire prend racine.",
+      heroP:"Un verger commémoratif vivant au cœur de Pierrefonds — où les arbres fruitiers remplacent les pierres tombales, et où l’héritage nourrit les générations à venir.",
+      heroCta:"Rejoindre la liste d’attente",
+      introEye:"Le contexte",
+      introP1:"Depuis plus de 60 ans, un centre de jardin bien-aimé orne les rives du boulevard Gouin Ouest à Pierrefonds. Ce terrain est vivant — verdoyant, généreux — et il est un lieu de rassemblement pour les familles de l’Ouest-de-l’Île depuis des générations.",
+      introP2:"Aujourd’hui, ce terrain est à vendre. Et nous sommes déterminés à le protéger.",
+      v1:"Pas des condos. Pas du béton.",
+      v2:"Un verger vivant.",
+      v3:"Un lieu pour se souvenir. Un lieu pour revenir.",
+      missionEye:"Notre mission",
+      missionP1:"Le Verger Cimetière de Pierrefonds est un endroit où le deuil et la croissance coexistent. Là où, au lieu d’une pierre froide, un arbre fruitier commémore une vie — nourrissant la terre, accueillant la faune, et invitant les vivants à revenir, année après année.",
+      missionP2:"Nous préservons un espace vert communautaire, ravivons une pratique vieille de plusieurs siècles, et créons un lieu ancré dans la mémoire, la nature et l’appartenance.",
+      mediaEye:"Dans les médias",
+      mediaK:"Nous avons été présentés sur CBC Radio.",
+      mediaBtn:"Écouter l’entrevue",
+      mediaUrl:"https://www.cbc.ca/listen/live-radio/1-383-lets-go/clip/16001454",
+      wlEye:"Liste d’attente",
+      wlH:"Faites partie de quelque chose d’enraciné.",
+      wlP:"Rejoignez notre communauté grandissante et soyez parmi les premiers informés de la disponibilité des terrains.",
+      fName:"Prénom", fEmail:"Courriel",
+      fInterest:"Je suis intéressé(e) par :",
+      opt1:"Un terrain pour une personne", opt2:"Un terrain pour un animal",
+      opt3:"Le projet en général", opt4:"Tout ce qui précède",
+      wlBtn:"Je m’inscris",
+      thanks:"Merci — vous êtes sur la liste. Nous vous contacterons bientôt."
+    },
+    story:{
+      h:"Notre histoire",
+      note:"Le cœur du projet.",
+      s1h:"L’origine",
+      s1:["L’idée est née dans le deuil. Mais elle a grandi en quelque chose de plus grand.",
+          "Le mois suivant une perte familiale bouleversante, nous avons planté un arbre — un amélanchier, juste devant notre maison à Pierrefonds. Ce n’était pas prévu. Mais cela m’a apporté la paix.",
+          "Cet arbre fleurit doucement chaque printemps. Les oiseaux le visitent le matin, il se dresse fièrement à travers chaque saison. Contrairement à une tombe, il ne me rappelle pas seulement la perte. Il me rappelle que l’amour continue. Que la vie revient. Que le deuil, lui aussi, peut prendre racine."],
+      s2h:"La vision qui a suivi",
+      s2:["J’en ai assez de regarder le monde se couvrir de béton. Assez d’entendre parler de notre échec envers la terre. Assez des plaintes et de l’inaction.",
+          "Je veux construire quelque chose. Quelque chose de vivant.",
+          "Le verger cimetière est ma réponse à cela. Un endroit où le deuil peut se transformer en quelque chose de significatif. Où la mémoire nourrit la terre. Où nous laissons derrière nous plus d’arbres, plus d’abondance, plus de création — et moins de tristesse.",
+          "C’est aussi, je l’ai réalisé, quelque chose de plus encore. Une destination. Un lieu de vie pour l’Ouest-de-l’Île. Un espace où les familles se rassemblent non seulement dans le deuil, mais dans la célébration — à chaque saison, pour des générations.",
+          "Voilà ma vision pour le terrain du boulevard Gouin Ouest. Et je crois que c’est possible."],
+      s3h:"Qui je suis",
+      s3:["Je m’appelle Sarra Muñoz. J’habite à Pierrefonds. Je suis mère, épouse, fille et professionnelle en marketing. Je détiens un MBA et je parle anglais, français et espagnol.",
+          "Mais les titres ne disent pas tout. Ce qui anime ce projet est plus simple et plus profond que tout cela : j’ai planté un arbre pour un être cher. Et je n’ai pas pu m’empêcher de penser à ce que cela pourrait signifier d’offrir ce même cadeau — la vie qui continue, l’amour visible, la mémoire ancrée dans quelque chose de vivant — à chaque famille qui s’est jamais tenue devant une pierre froide en souhaitant quelque chose de plus."],
+      sign:"— Sarra Muñoz, Pierrefonds"
+    },
+    project:{
+      h:"Le projet",
+      p1h:"Qu’est-ce qu’un verger cimetière ?",
+      p1:["Un verger cimetière est un espace commémoratif où chaque enterrement est accompagné de la plantation d’un arbre fruitier. Au lieu des pierres tombales traditionnelles, les arbres servent de marqueurs vivants — symboles de mémoire, de nourriture et de renouveau.",
+          "Ce concept n’est pas nouveau. Au Moyen Âge, les communautés monastiques combinaient les lieux d’inhumation avec des vergers et des jardins, reflétant la compréhension que la vie et la mort font partie du même cycle naturel. Nous ravivons cette pratique pour le monde d’aujourd’hui — et de demain."],
+      p2h:"Pourquoi des arbres fruitiers ?",
+      p2:["Les arbres fruitiers sont des symboles d’abondance et de continuité. Ils fournissent nourriture, abri pour les pollinisateurs, et beauté à chaque saison.",
+          "De nombreuses variétés fruitières patrimoniales — cultivées depuis des siècles — disparaissent parce que l’agriculture industrielle ne les trouve plus rentables. Le Verger Cimetière de Pierrefonds plantera et préservera ces variétés menacées, un arbre à la fois, créant une bibliothèque vivante de biodiversité au cœur de notre communauté."],
+      p3h:"Le terrain",
+      p3:["Le projet est prévu pour la propriété de 5,7 hectares entourant l’ancien Jardin Cléroux (Botanix) sur le boulevard Gouin Ouest — un espace vert qui dessert la communauté de Pierrefonds depuis plus de 60 ans.",
+          "Dans la mesure du possible, nous prévoyons de poursuivre les activités du centre de jardin et de la pépinière, honorant l’héritage vivant du site."],
+      facts:[["5,7 ha","d’espace vert vivant"],["3 200–5 000","arbres possibles sur le site"],["60+ ans","au service de la communauté"]],
+      offerH:"Ce que nous offrons",
+      offer:[
+        ["Terrains pour les personnes","Terrains d’enterrement naturel et écologique où un arbre fruitier patrimonial est planté à la place d’une pierre tombale. Les familles peuvent visiter le verger, récolter les fruits et voir l’arbre de leur proche grandir à chaque saison."],
+        ["Terrains pour les animaux","Terrains d’enterrement naturel pour les animaux bien-aimés, chacun marqué par un arbre nain ou une plante vivace en fleurs."],
+        ["Célébrations de vie","Les bâtiments existants sur la propriété seront aménagés avec soin en espaces pour les rassemblements commémoratifs, les célébrations de vie et les événements communautaires — entourés de nature."]
+      ],
+      glimpseH:"Un aperçu de ce qui vient",
+      glimpse:["Le verger cimetière est l’âme de ce projet. Mais nous envisageons quelque chose de plus : une destination où les gens viennent non seulement pour pleurer, mais pour s’attarder, savourer et se connecter.",
+        "Dans les saisons à venir, nous explorons la possibilité d’un espace boutique pour les visiteurs — un lieu pour se reposer, se retrouver et vivre la beauté du verger à chaque saison. Une cuisine où la récolte devient quelque chose de partagé. Un café où le deuil s’adoucit autour d’une tasse chaude, et où la vie — doucement, avec persistance — continue.",
+        "Plus de détails arrivent. Restez proches."]
+    },
+    faq:{
+      h:"Foire aux questions",
+      items:[
+        ["Qu’est-ce qu’un enterrement naturel ou écologique ?","Un enterrement simple et naturel, sans embaumement chimique, dans un cercueil en matériaux biodégradables — bois non fini, osier, carton ou un linceul naturel. Le corps retourne à la terre comme la nature l’a prévu."],
+        ["Existe-t-il des sites similaires au Québec ?","Oui — il en existe actuellement deux. Le Verger Cimetière de Pierrefonds serait le troisième site d’enterrement naturel au Québec, et le premier à combiner l’enterrement écologique avec un vrai verger fruitier à cette échelle.<div class='partners'><a href='https://coopfuneraireestrie.com' target='_blank'>Coopérative Funéraire de l’Estrie →</a><a href='https://lessentiers.ca' target='_blank'>Les Sentiers →</a></div>"],
+        ["Qu’advient-il des fruits cultivés dans le verger ?","Nous croyons en la continuité de la vie — et cela inclut la récolte. Les familles seront invitées à cueillir les fruits de l’arbre de leur proche, comme une tradition saisonnière. Les surplus pourront être compostés pour nourrir le verger, ou partagés avec des partenaires communautaires locaux. Nous façonnons encore les détails et accueillons vos idées."],
+        ["Les familles peuvent-elles visiter les arbres ?","Oui. Le verger cimetière sera un espace accueillant et accessible pour que les familles et les proches puissent visiter, marcher et s’asseoir parmi les arbres à chaque saison. Ce n’est pas seulement un lieu de souvenir — c’est un lieu de retour."],
+        ["Où en est le projet dans son développement ?","Nous avons présenté le projet à la Ville de Pierrefonds-Roxboro en 2023 et avons reçu un soutien encourageant. Nous avons été présentés sur CBC Radio, avons présenté la vision au propriétaire du terrain, et avons bâti une communauté grandissante de personnes qui croient en ce projet. Nous reconstruisons maintenant notre élan — en reprenant contact avec la ville, en explorant des structures de financement, et en faisant croître notre liste d’attente. Chaque nom sur cette liste est une voix qui dit : cela compte. Cela devrait exister. Si vous le croyez aussi, rejoignez-nous."],
+        ["Comment puis-je aider ?","La chose la plus puissante que vous puissiez faire maintenant : rejoindre notre liste d’attente, partager ce projet avec quelqu’un qui le comprendrait, et — si vous travaillez en gouvernance municipale, finance environnementale, urbanisme ou dans l’industrie funéraire — nous contacter. Nous construisons des partenariats. Chaque conversation plante une graine."]
+      ]
+    },
+    contact:{
+      h:"Contact",
+      p:"Vous avez des questions ? Vous souhaitez vous impliquer ? Ou vous voulez simplement dire bonjour ? Nous serions ravis de vous entendre.",
+      email:"sarra.isabel@gmail.com",
+      fName:"Nom", fEmail:"Courriel", fMsg:"Message", btn:"Envoyer",
+      thanks:"Merci — votre message est en route."
+    },
+    footer:{tag:"Là où la mémoire prend racine.", meta:"Orchard Cemetery · Verger Cimetière<br>Pierrefonds, Montréal<br>orchardcemetery.ca · vergercimetiere.ca"}
+  }
+};
+
+let lang = "en";
+let page = "home";
+
+function esc(s){return s}
+function paras(arr){return arr.map(p=>`<p>${p}</p>`).join("")}
+
+function render(){
+  const t = C[lang];
+  document.documentElement.lang = lang;
+  document.getElementById("brand-sub").textContent = t.brandSub;
+  document.getElementById("cta-head").textContent = t.ctaHead;
+  // nav
+  document.getElementById("nav").innerHTML = Object.keys(t.nav).map(k=>
+    `<a class="${page===k?'active':''}" onclick="go('${k}')">${t.nav[k]}</a>`).join("");
+  // lang
+  document.getElementById("lang").innerHTML =
+    `<button class="${lang==='en'?'on':''}" onclick="setLang('en')">EN</button><span>|</span>`+
+    `<button class="${lang==='fr'?'on':''}" onclick="setLang('fr')">FR</button>`;
+  // footer
+  document.getElementById("foot-tag").textContent = t.footer.tag;
+  document.getElementById("foot-meta").innerHTML = t.footer.meta;
+  // page
+  document.getElementById("app").innerHTML = PAGES[page]();
+  wireFaq();
+}
+
+const PAGES = {
+  home(){const t=C[lang].home;return `
+    <div class="page show">
+      <div class="hero"><div class="ph"></div>
+        <div class="hero-inner">
+          <h1>${t.heroH}</h1>
+          <p>${t.heroP}</p>
+          <a class="btn btn-cream" onclick="scrollToForm()">${t.heroCta} <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <section><div class="wrap">
+        <div class="eyebrow">${t.introEye}</div>
+        <div class="prose"><p class="lead">${t.introP1}</p><p class="lead">${t.introP2}</p></div>
+      </div></section>
+
+      <div class="vision"><div class="wrap">
+        <div class="line a">${t.v1}</div>
+        <div class="line b">${t.v2}</div>
+        <div class="line c">${t.v3}</div>
+      </div></div>
+
+      <section><div class="wrap">
+        <div class="eyebrow">${t.missionEye}</div>
+        <h2 class="section">${C[lang].nav.home==='Home'?'A place where grief and growth coexist':'Un lieu où le deuil et la croissance coexistent'}</h2>
+        <div class="prose"><p>${t.missionP1}</p><p>${t.missionP2}</p></div>
+      </div></section>
+
+      <section class="band-cream2"><div class="wrap">
+        <div class="eyebrow">${t.mediaEye}</div>
+        <div class="media">
+          <div class="k">${t.mediaK}</div>
+          <a class="btn btn-forest" href="${t.mediaUrl}" target="_blank">${t.mediaBtn} →</a>
+        </div>
+      </div></section>
+
+      <section class="band-sage" id="waitlist"><div class="wrap">
+        <div style="max-width:560px">
+          <h2 class="section">${t.wlH}</h2>
+          <p class="lead" style="margin-bottom:8px">${t.wlP}</p>
+          <div class="form">
+            <label>${t.fName}</label><input type="text" id="wl-name">
+            <label>${t.fEmail}</label><input type="email" id="wl-email">
+            <label>${t.fInterest}</label>
+            <div class="checks">
+              <label><input type="checkbox">${t.opt1}</label>
+              <label><input type="checkbox">${t.opt2}</label>
+              <label><input type="checkbox">${t.opt3}</label>
+              <label><input type="checkbox">${t.opt4}</label>
+            </div>
+            <button class="btn btn-cream" onclick="fakeSubmit('wl-thanks')">${t.wlBtn} →</button>
+            <div class="thanks" id="wl-thanks">${t.thanks}</div>
+          </div>
+        </div>
+      </div></section>
+    </div>`;
+  },
+
+  story(){const t=C[lang].story;return `
+    <div class="page show">
+      <div class="story-hero"><div class="wrap">
+        <div class="eyebrow">${t.note}</div>
+        <h1>${t.h}</h1>
+      </div></div>
+      <hr class="rule">
+      <section><div class="wrap prose">
+        <h2 class="section">${t.s1h}</h2>${paras(t.s1)}
+      </div></section>
+      <section class="band-cream2"><div class="wrap prose">
+        <h2 class="section">${t.s2h}</h2>${paras(t.s2)}
+      </div></section>
+      <section><div class="wrap prose">
+        <h2 class="section">${t.s3h}</h2>${paras(t.s3)}
+        <div class="signature">${t.sign}</div>
+      </div></section>
+    </div>`;
+  },
+
+  project(){const t=C[lang].project;return `
+    <div class="page show">
+      <div class="story-hero"><div class="wrap"><h1>${t.h}</h1></div></div>
+      <hr class="rule">
+      <section><div class="wrap prose">
+        <h2 class="section">${t.p1h}</h2>${paras(t.p1)}
+      </div></section>
+      <section class="band-cream2"><div class="wrap prose">
+        <h2 class="section">${t.p2h}</h2>${paras(t.p2)}
+      </div></section>
+      <section><div class="wrap">
+        <div class="prose"><h2 class="section">${t.p3h}</h2>${paras(t.p3)}</div>
+        <div class="facts">
+          ${t.facts.map(f=>`<div class="f"><b>${f[0]}</b><span>${f[1]}</span></div>`).join("")}
+        </div>
+      </div></section>
+      <section class="band-sage"><div class="wrap">
+        <h2 class="section">${t.offerH}</h2>
+        <div class="offer">
+          ${t.offer.map(o=>`<div class="card"><h3>${o[0]}</h3><p>${o[1]}</p></div>`).join("")}
+        </div>
+      </div></section>
+      <section><div class="wrap">
+        <div class="glimpse"><h2 class="section">${t.glimpseH}</h2>${paras(t.glimpse)}</div>
+      </div></section>
+    </div>`;
+  },
+
+  faq(){const t=C[lang].faq;return `
+    <div class="page show">
+      <div class="story-hero"><div class="wrap"><h1>${t.h}</h1></div></div>
+      <hr class="rule">
+      <section><div class="wrap" style="max-width:820px">
+        ${t.items.map(it=>`
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">${it[0]}</button>
+            <div class="faq-a"><div class="inner">${it[1]}</div></div>
+          </div>`).join("")}
+      </div></section>
+    </div>`;
+  },
+
+  contact(){const t=C[lang].contact;return `
+    <div class="page show">
+      <div class="story-hero"><div class="wrap"><h1>${t.h}</h1></div></div>
+      <hr class="rule">
+      <section><div class="wrap">
+        <div class="contact-grid">
+          <div class="prose">
+            <p class="lead">${t.p}</p>
+            <a class="email" href="mailto:${t.email}">${t.email}</a>
+          </div>
+          <div class="form">
+            <label>${t.fName}</label><input type="text">
+            <label>${t.fEmail}</label><input type="email">
+            <label>${t.fMsg}</label><textarea></textarea>
+            <button class="btn btn-forest" onclick="fakeSubmit('ct-thanks')">${t.btn} →</button>
+            <div class="thanks" id="ct-thanks">${t.thanks}</div>
+          </div>
+        </div>
+      </div></section>
+    </div>`;
+  }
+};
+
+function go(p){page=p;document.getElementById('nav').classList.remove('open');render();window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});}
+function setLang(l){lang=l;render();}
+function scrollToForm(){const w=document.getElementById('waitlist');if(w){w.scrollIntoView({behavior:'smooth'});}}
+function fakeSubmit(id){const el=document.getElementById(id);if(el)el.style.display='block';}
+function toggleFaq(btn){const item=btn.parentElement;const a=item.querySelector('.faq-a');
+  const open=item.classList.toggle('open');a.style.maxHeight=open?a.querySelector('.inner').scrollHeight+40+'px':'0';}
+function wireFaq(){}
+
+render();
+</script>
+</body>
+</html>
