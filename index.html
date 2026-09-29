@@ -76,10 +76,7 @@
     text-align:center;color:var(--cream);overflow:hidden;padding:40px 20px}
   .hero .ph{position:absolute;inset:0;background:
     radial-gradient(120% 120% at 70% 20%, #35694f 0%, #1B4332 55%, #12301F 100%)}
-  .hero .ph::after{content:"orchard in golden light · l’ancien Jardin Cléroux";
-    position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.1em;
-    text-transform:uppercase;color:rgba(249,245,236,.45);font-family:var(--sans)}
-  .hero-inner{position:relative;max-width:760px}
+    .hero-inner{position:relative;max-width:760px}
   .hero h1{color:var(--cream);font-size:clamp(40px,7vw,74px);font-weight:500;line-height:1.05}
   .hero p{font-size:clamp(17px,2.4vw,21px);margin:26px auto 34px;max-width:600px;
     color:rgba(249,245,236,.9)}
@@ -91,7 +88,8 @@
     font-weight:400;max-width:15ch;margin-bottom:8px}
   .vision .line.a{color:rgba(249,245,236,.55)}
   .vision .line.b{color:var(--cream)}
-  .vision .line.c{color:var(--gold)}
+  .vision .line.c{color:var(--cream)}
+  .vision .line .gold{color:var(--gold)}
 
   /* mission / bands */
   .band-sage{background:var(--sage);color:var(--cream)}
@@ -212,21 +210,17 @@ const C = {
     brandSub:"Verger Cimetière · Pierrefonds",
     home:{
       heroH:"Where memory takes root.",
-      heroP:"A living memorial orchard in the heart of Pierrefonds — where fruit trees replace tombstones, and legacy feeds generations to come.",
+      heroP:"A living memorial orchard in the heart of Pierrefonds — where fruit trees replace tombstones, and legacy provides for generations to come.",
       heroCta:"Join the Waitlist",
       introEye:"The context",
       introP1:"For over 60 years, a beloved garden centre has graced the banks of Gouin Boulevard West in Pierrefonds. The land is alive — lush, green, and generous — and it has been a gathering place for West Island families for generations.",
-      introP2:"Today, that land is for sale. And we are determined to protect it.",
+      introP2:"Today, that land is for sale. And we are determined to keep it green.",
       v1:"Not condominiums. Not concrete.",
       v2:"A living orchard.",
-      v3:"A place to remember. A place to return.",
+      v3:"<span class='gold'>A place to remember.</span> A place to visit.",
       missionEye:"Our mission",
       missionP1:"The Pierrefonds Orchard Cemetery is a place where grief and growth coexist. Where instead of a cold stone, a fruit tree marks a life — nourishing the earth, sheltering wildlife, and welcoming the living for years to come.",
       missionP2:"We are preserving a community green space, reviving a centuries-old practice, and creating a destination rooted in memory, nature, and belonging.",
-      mediaEye:"In the news",
-      mediaK:"We’ve been featured on CBC Radio.",
-      mediaBtn:"Listen to the interview",
-      mediaUrl:"https://www.cbc.ca/listen/live-radio/1-383-lets-go/clip/16001454",
       wlEye:"Join the waitlist",
       wlH:"Be part of something rooted.",
       wlP:"Join our growing community of believers, and be the first to know when plots become available.",
@@ -243,39 +237,38 @@ const C = {
       s1h:"The origin",
       s1:["The idea began in grief. But it grew into something larger.",
           "In the month after a devastating family loss, we planted a tree — a serviceberry tree, just outside our home in Pierrefonds. It wasn’t planned. But it brought me peace.",
-          "That tree blooms quietly each spring. It’s visited by birds in the morning, standing tall through every season. Unlike a grave, it doesn’t only remind me of loss. It reminds me that love continues. That life returns. That grief, too, can grow roots."],
+          "That tree blooms each spring. It’s visited by birds in the morning, standing tall through every season. Unlike a grave, it doesn’t only remind me of loss. It reminds me that love continues. That life returns. That grief, too, can grow roots."],
       s2h:"The vision that followed",
-      s2:["I am tired of watching the world be covered in concrete. Tired of hearing how we are failing the earth. Tired of the complaining and the inaction.",
-          "I want to build something. Something living.",
-          "The orchard cemetery is my answer to that. A place where grief can grow into something meaningful. Where memory feeds the earth. Where we leave behind more trees, more abundance, more creation — and less sorrow.",
-          "It is also, I’ve come to realize, something even more. A destination. A living landmark for the West Island. A space where families gather not only in mourning, but in celebration — in every season, for generations.",
+      s2:["I'm tired of watching the world be covered in concrete. I'm tired of hearing how we are failing the earth. And I'm done with the complaining and the inaction.",
+          "I want us to build something. Something living.",
+          "The orchard cemetery is my answer to that. A place where grief can grow into something meaningful. Where memory feeds the earth. Where we leave behind more trees, more abundance, more creation — and less sorrow. More life.",
+          "It's also becoming, I’m beginning to realize, something more. A destination. A living landmark for Montreal. A space where families gather not only in mourning, but in celebration — in every season, for generations.",
           "This is my vision for the land on Gouin Boulevard West. And I believe it is possible."],
       s3h:"Who I am",
-      s3:["My name is Sarra Muñoz. I live in Pierrefonds. I am a mother, a wife, a daughter, and a marketing professional. I hold an MBA and I speak English, French, and Spanish.",
-          "But credentials only say so much. What drives this project is simpler and deeper than any of that: I planted a tree for someone I loved. And I haven’t been able to stop thinking about what it could mean to offer that same gift — life continuing, love visible, memory rooted in something living — to every family who has ever stood beside a cold stone and wished for something more."],
+      s3:["My name is Sarra Muñoz. I live in Pierrefonds, Montreal. I am a mother, a wife, a daughter, and a marketing professional. I hold an MBA and I speak English, French, and Spanish.",
+          "But credentials only say so much. What drives this project is simpler than any of that: I planted a tree for someone I loved, and love. And I haven’t been able to stop thinking about what it could mean to offer that same gift — life continuing, love visible, memory rooted in something living — to every family who has ever stood beside a cold stone and wished for something more."],
       sign:"— Sarra Muñoz, Pierrefonds"
     },
     project:{
       h:"The Project",
       p1h:"What is an orchard cemetery?",
       p1:["An orchard cemetery is a memorial space where each burial is accompanied by the planting of a fruit tree. Rather than traditional tombstones, trees serve as living markers — symbols of memory, nourishment, and renewal.",
-          "This concept is not new. In the Middle Ages, monastic communities combined burial grounds with orchards and gardens, reflecting the understanding that life and death are part of the same natural cycle. We are reviving that practice for today’s world — and for tomorrow’s."],
+          "This concept is not new. In the Middle Ages, monastic communities combined burial grounds with orchards and gardens, reflecting the understanding that life and death are part of the same natural cycle. We are reviving that practice for today’s world — and for tomorrow’s generations."],
       p2h:"Why fruit trees?",
       p2:["Fruit trees are symbols of abundance and continuity. They provide food, shelter for pollinators, and beauty through every season.",
           "Many heritage fruit varieties — cultivated for centuries — are disappearing because industrial agriculture no longer finds them profitable. The Pierrefonds Orchard Cemetery will plant and preserve these threatened varieties, one tree at a time, creating a living library of biodiversity in the heart of our community."],
       p3h:"The land",
-      p3:["The project is planned for the 5.7-hectare property surrounding the former Jardin Cléroux (Botanix) on Gouin Boulevard West — a green space that has served the Pierrefonds community for over 60 years.",
-          "If possible, we intend to continue the operations of the garden centre and nursery, honouring the site’s living legacy."],
-      facts:[["5.7 ha","of living green space"],["3,200–5,000","trees the site can hold"],["60+ yrs","serving the community"]],
+      p3:["The project is planned for the 5.7-hectare property surrounding the former Jardin Cléroux (Botanix) on Gouin Boulevard West — a green space that has served the Pierrefonds and West Island community for over 60 years.",],
+      facts:[["5.7 acres","of living green space"],["+900","trees the site can hold"],["60+ yrs","serving the community"]],
       offerH:"What we offer",
       offer:[
-        ["Plots for people","Natural ecological burial plots where a heritage fruit tree is planted in place of a tombstone. Families may visit the orchard, harvest fruit, and witness their loved one’s tree grow through every season."],
+        ["Plots for people","Natural ecological burial plots where a heritage fruit tree is planted in place of a tombstone. Families may visit the orchard and witness their loved one’s tree grow through every season."],
         ["Plots for pets","Natural burial plots for beloved animals, each marked by a dwarf fruit tree or flowering perennial."],
         ["Celebrations of life","The existing structures on the property will be lovingly repurposed as a space for memorial gatherings, celebrations of life, and community events — surrounded by nature."]
       ],
       glimpseH:"A glimpse of what’s coming",
       glimpse:["The orchard cemetery is the soul of this project. But we envision something more: a destination where people come not only to mourn, but to stay, to savour, and to connect.",
-        "In the seasons ahead, we are exploring the possibility of a boutique space for visitors — a place to rest, to gather, and to experience the beauty of the orchard across every season. A kitchen where the harvest becomes something shared. A café where grief softens over a warm cup, and where life — quietly, persistently — continues.",
+        "In the seasons ahead, we are exploring the possibility of a boutique space for visitors — a place to rest, to gather, and to experience the beauty of the orchard across every season. A kitchen where the harvest becomes something shared. A café where grief softens over a warm cup, and where life — persistently — continues.",
         "More details are coming. Stay close."]
     },
     faq:{
@@ -292,7 +285,7 @@ const C = {
     contact:{
       h:"Contact",
       p:"Do you have questions? Would you like to be involved? Or would you simply like to say hello? We’d love to hear from you.",
-      email:"sarra.isabel@gmail.com",
+      email:"info@orchardcemetery.ca",
       fName:"Name", fEmail:"Email", fMsg:"Message", btn:"Send",
       thanks:"Thank you — your message is on its way."
     },
@@ -305,21 +298,17 @@ const C = {
     brandSub:"Verger Cimetière · Pierrefonds",
     home:{
       heroH:"Là où la mémoire prend racine.",
-      heroP:"Un verger commémoratif vivant au cœur de Pierrefonds — où les arbres fruitiers remplacent les pierres tombales, et où l’héritage nourrit les générations à venir.",
+      heroP:"Un verger commémoratif vivant au cœur de Pierrefonds — où les arbres fruitiers remplacent les pierres tombales, et où l’héritage profite aux générations à venir.",
       heroCta:"Rejoindre la liste d’attente",
       introEye:"Le contexte",
       introP1:"Depuis plus de 60 ans, un centre de jardin bien-aimé orne les rives du boulevard Gouin Ouest à Pierrefonds. Ce terrain est vivant — verdoyant, généreux — et il est un lieu de rassemblement pour les familles de l’Ouest-de-l’Île depuis des générations.",
-      introP2:"Aujourd’hui, ce terrain est à vendre. Et nous sommes déterminés à le protéger.",
+      introP2:"Aujourd’hui, ce terrain est à vendre. Et nous sommes déterminés à ce qu’il reste vert.",
       v1:"Pas des condos. Pas du béton.",
       v2:"Un verger vivant.",
-      v3:"Un lieu pour se souvenir. Un lieu pour revenir.",
+      v3:"<span class='gold'>Un lieu pour se souvenir.</span> Un lieu à visiter.",
       missionEye:"Notre mission",
       missionP1:"Le Verger Cimetière de Pierrefonds est un endroit où le deuil et la croissance coexistent. Là où, au lieu d’une pierre froide, un arbre fruitier commémore une vie — nourrissant la terre, accueillant la faune, et invitant les vivants à revenir, année après année.",
       missionP2:"Nous préservons un espace vert communautaire, ravivons une pratique vieille de plusieurs siècles, et créons un lieu ancré dans la mémoire, la nature et l’appartenance.",
-      mediaEye:"Dans les médias",
-      mediaK:"Nous avons été présentés sur CBC Radio.",
-      mediaBtn:"Écouter l’entrevue",
-      mediaUrl:"https://www.cbc.ca/listen/live-radio/1-383-lets-go/clip/16001454",
       wlEye:"Liste d’attente",
       wlH:"Faites partie de quelque chose d’enraciné.",
       wlP:"Rejoignez notre communauté grandissante et soyez parmi les premiers informés de la disponibilité des terrains.",
@@ -336,39 +325,38 @@ const C = {
       s1h:"L’origine",
       s1:["L’idée est née dans le deuil. Mais elle a grandi en quelque chose de plus grand.",
           "Le mois suivant une perte familiale bouleversante, nous avons planté un arbre — un amélanchier, juste devant notre maison à Pierrefonds. Ce n’était pas prévu. Mais cela m’a apporté la paix.",
-          "Cet arbre fleurit doucement chaque printemps. Les oiseaux le visitent le matin, il se dresse fièrement à travers chaque saison. Contrairement à une tombe, il ne me rappelle pas seulement la perte. Il me rappelle que l’amour continue. Que la vie revient. Que le deuil, lui aussi, peut prendre racine."],
+          "Cet arbre fleurit chaque printemps. Les oiseaux le visitent le matin, il se dresse fièrement à travers chaque saison. Contrairement à une tombe, il ne me rappelle pas seulement la perte. Il me rappelle que l’amour continue. Que la vie revient. Que le deuil, lui aussi, peut prendre racine."],
       s2h:"La vision qui a suivi",
-      s2:["J’en ai assez de regarder le monde se couvrir de béton. Assez d’entendre parler de notre échec envers la terre. Assez des plaintes et de l’inaction.",
-          "Je veux construire quelque chose. Quelque chose de vivant.",
-          "Le verger cimetière est ma réponse à cela. Un endroit où le deuil peut se transformer en quelque chose de significatif. Où la mémoire nourrit la terre. Où nous laissons derrière nous plus d’arbres, plus d’abondance, plus de création — et moins de tristesse.",
-          "C’est aussi, je l’ai réalisé, quelque chose de plus encore. Une destination. Un lieu de vie pour l’Ouest-de-l’Île. Un espace où les familles se rassemblent non seulement dans le deuil, mais dans la célébration — à chaque saison, pour des générations.",
+      s2:["J’en ai assez de regarder le monde se couvrir de béton. J’en ai assez d’entendre parler de notre échec envers la terre. Et j’en ai fini avec les plaintes et l’inaction.",
+          "Je veux que nous construisions quelque chose. Quelque chose de vivant.",
+          "Le verger cimetière est ma réponse à cela. Un endroit où le deuil peut se transformer en quelque chose de significatif. Où la mémoire nourrit la terre. Où nous laissons derrière nous plus d’arbres, plus d’abondance, plus de création — et moins de tristesse. Plus de vie.",
+          "Cela devient aussi, je commence à le réaliser, quelque chose de plus. Une destination. Un repère vivant pour Montréal. Un espace où les familles se rassemblent non seulement dans le deuil, mais dans la célébration — à chaque saison, pour des générations.",
           "Voilà ma vision pour le terrain du boulevard Gouin Ouest. Et je crois que c’est possible."],
       s3h:"Qui je suis",
-      s3:["Je m’appelle Sarra Muñoz. J’habite à Pierrefonds. Je suis mère, épouse, fille et professionnelle en marketing. Je détiens un MBA et je parle anglais, français et espagnol.",
-          "Mais les titres ne disent pas tout. Ce qui anime ce projet est plus simple et plus profond que tout cela : j’ai planté un arbre pour un être cher. Et je n’ai pas pu m’empêcher de penser à ce que cela pourrait signifier d’offrir ce même cadeau — la vie qui continue, l’amour visible, la mémoire ancrée dans quelque chose de vivant — à chaque famille qui s’est jamais tenue devant une pierre froide en souhaitant quelque chose de plus."],
+      s3:["Je m’appelle Sarra Muñoz. J’habite à Pierrefonds, à Montréal. Je suis mère, épouse, fille et professionnelle en marketing. Je détiens un MBA et je parle anglais, français et espagnol.",
+          "Mais les titres ne disent pas tout. Ce qui anime ce projet est plus simple que tout cela : j’ai planté un arbre pour quelqu’un que j’aimais, et que j’aime toujours. Et je n’ai pas pu m’empêcher de penser à ce que cela pourrait signifier d’offrir ce même cadeau — la vie qui continue, l’amour visible, la mémoire ancrée dans quelque chose de vivant — à chaque famille qui s’est jamais tenue devant une pierre froide en souhaitant quelque chose de plus."],
       sign:"— Sarra Muñoz, Pierrefonds"
     },
     project:{
       h:"Le projet",
       p1h:"Qu’est-ce qu’un verger cimetière ?",
       p1:["Un verger cimetière est un espace commémoratif où chaque enterrement est accompagné de la plantation d’un arbre fruitier. Au lieu des pierres tombales traditionnelles, les arbres servent de marqueurs vivants — symboles de mémoire, de nourriture et de renouveau.",
-          "Ce concept n’est pas nouveau. Au Moyen Âge, les communautés monastiques combinaient les lieux d’inhumation avec des vergers et des jardins, reflétant la compréhension que la vie et la mort font partie du même cycle naturel. Nous ravivons cette pratique pour le monde d’aujourd’hui — et de demain."],
+          "Ce concept n’est pas nouveau. Au Moyen Âge, les communautés monastiques combinaient les lieux d’inhumation avec des vergers et des jardins, reflétant la compréhension que la vie et la mort font partie du même cycle naturel. Nous ravivons cette pratique pour le monde d’aujourd’hui — et pour les générations de demain."],
       p2h:"Pourquoi des arbres fruitiers ?",
       p2:["Les arbres fruitiers sont des symboles d’abondance et de continuité. Ils fournissent nourriture, abri pour les pollinisateurs, et beauté à chaque saison.",
           "De nombreuses variétés fruitières patrimoniales — cultivées depuis des siècles — disparaissent parce que l’agriculture industrielle ne les trouve plus rentables. Le Verger Cimetière de Pierrefonds plantera et préservera ces variétés menacées, un arbre à la fois, créant une bibliothèque vivante de biodiversité au cœur de notre communauté."],
       p3h:"Le terrain",
-      p3:["Le projet est prévu pour la propriété de 5,7 hectares entourant l’ancien Jardin Cléroux (Botanix) sur le boulevard Gouin Ouest — un espace vert qui dessert la communauté de Pierrefonds depuis plus de 60 ans.",
-          "Dans la mesure du possible, nous prévoyons de poursuivre les activités du centre de jardin et de la pépinière, honorant l’héritage vivant du site."],
-      facts:[["5,7 ha","d’espace vert vivant"],["3 200–5 000","arbres possibles sur le site"],["60+ ans","au service de la communauté"]],
+      p3:["Le projet est prévu pour la propriété de 5,7 hectares entourant l’ancien Jardin Cléroux (Botanix) sur le boulevard Gouin Ouest — un espace vert qui dessert la communauté de Pierrefonds et de l’Ouest-de-l’Île depuis plus de 60 ans."],
+      facts:[["5,7 acres","d’espace vert vivant"],["+900","arbres possibles sur le site"],["60+ ans","au service de la communauté"]],
       offerH:"Ce que nous offrons",
       offer:[
-        ["Terrains pour les personnes","Terrains d’enterrement naturel et écologique où un arbre fruitier patrimonial est planté à la place d’une pierre tombale. Les familles peuvent visiter le verger, récolter les fruits et voir l’arbre de leur proche grandir à chaque saison."],
+        ["Terrains pour les personnes","Terrains d’enterrement naturel et écologique où un arbre fruitier patrimonial est planté à la place d’une pierre tombale. Les familles peuvent visiter le verger et voir l’arbre de leur proche grandir à chaque saison."],
         ["Terrains pour les animaux","Terrains d’enterrement naturel pour les animaux bien-aimés, chacun marqué par un arbre nain ou une plante vivace en fleurs."],
         ["Célébrations de vie","Les bâtiments existants sur la propriété seront aménagés avec soin en espaces pour les rassemblements commémoratifs, les célébrations de vie et les événements communautaires — entourés de nature."]
       ],
       glimpseH:"Un aperçu de ce qui vient",
       glimpse:["Le verger cimetière est l’âme de ce projet. Mais nous envisageons quelque chose de plus : une destination où les gens viennent non seulement pour pleurer, mais pour s’attarder, savourer et se connecter.",
-        "Dans les saisons à venir, nous explorons la possibilité d’un espace boutique pour les visiteurs — un lieu pour se reposer, se retrouver et vivre la beauté du verger à chaque saison. Une cuisine où la récolte devient quelque chose de partagé. Un café où le deuil s’adoucit autour d’une tasse chaude, et où la vie — doucement, avec persistance — continue.",
+        "Dans les saisons à venir, nous explorons la possibilité d’un espace boutique pour les visiteurs — un lieu pour se reposer, se retrouver et vivre la beauté du verger à chaque saison. Une cuisine où la récolte devient quelque chose de partagé. Un café où le deuil s’adoucit autour d’une tasse chaude, et où la vie — avec persistance — continue.",
         "Plus de détails arrivent. Restez proches."]
     },
     faq:{
@@ -385,7 +373,7 @@ const C = {
     contact:{
       h:"Contact",
       p:"Vous avez des questions ? Vous souhaitez vous impliquer ? Ou vous voulez simplement dire bonjour ? Nous serions ravis de vous entendre.",
-      email:"sarra.isabel@gmail.com",
+      email:"info@orchardcemetery.ca",
       fName:"Nom", fEmail:"Courriel", fMsg:"Message", btn:"Envoyer",
       thanks:"Merci — votre message est en route."
     },
@@ -445,14 +433,6 @@ const PAGES = {
         <div class="eyebrow">${t.missionEye}</div>
         <h2 class="section">${C[lang].nav.home==='Home'?'A place where grief and growth coexist':'Un lieu où le deuil et la croissance coexistent'}</h2>
         <div class="prose"><p>${t.missionP1}</p><p>${t.missionP2}</p></div>
-      </div></section>
-
-      <section class="band-cream2"><div class="wrap">
-        <div class="eyebrow">${t.mediaEye}</div>
-        <div class="media">
-          <div class="k">${t.mediaK}</div>
-          <a class="btn btn-forest" href="${t.mediaUrl}" target="_blank">${t.mediaBtn} →</a>
-        </div>
       </div></section>
 
       <section class="band-sage" id="waitlist"><div class="wrap">
